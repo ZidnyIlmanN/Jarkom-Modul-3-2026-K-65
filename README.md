@@ -253,23 +253,27 @@ Jika koneksi eksternal gagal, pemeriksaan dilanjutkan pada default route, konfig
 
 1. **Topologi Jaringan Lengkap di GNS3**
 
-   - Bukti: `bukti/soal-1/topologi.png`
+   - Bukti: <img width="1202" height="707" alt="topologi" src="https://github.com/user-attachments/assets/61aaa842-898a-47bc-b149-4fafd8ecc0b1" />
+   
    - Keterangan: Topologi Jujutsu High dirancang sesuai skema soal, dengan `jichi` sebagai router utama yang terhubung ke NAT1 dan empat segmen jaringan internal.
 
 2. **Verifikasi Alamat IP, Tabel Routing Router, IPv4 Forwarding dan Source NAT  `jichi`**
 
-   - Bukti: `bukti/soal-1/ip-route-jichi.png`
+   - Bukti: <img width="798" height="457" alt="ip-route-jichi" src="https://github.com/user-attachments/assets/b3a7c537-2e1a-4b28-91b6-93b8fc7709d8" />
+   
    - Keterangan: Output `ip -br addr` dan `ip route` digunakan untuk membuktikan bahwa interface WAN memperoleh alamat IP melalui DHCP, sedangkan interface `eth1–eth4` menggunakan alamat gateway statis sesuai Network 1–4. 
    Output `sysctl net.ipv4.ip_forward` menunjukkan status forwarding, sedangkan output `iptables -t nat -L POSTROUTING -n -v` digunakan untuk memeriksa aturan Source NAT.
 
 3. **Uji Konektivitas Host Network 1**
 
-   - Bukti: `bukti/soal-1/ping-utahime.png`
+   - Bukti: <img width="800" height="463" alt="ping-utahime" src="https://github.com/user-attachments/assets/b10a00f1-7c60-4793-804f-94489ce96549" />
+
    - Keterangan: Hasil pengujian ping dari `utahime` menuju gateway `10.96.1.1` digunakan untuk memverifikasi konektivitas dasar Network 1.
 
 4. **Uji Konektivitas Host Network 4**
 
-   - Bukti: `bukti/soal-1/ping-tengen.png`
+   - Bukti: <img width="801" height="457" alt="ping-tengen" src="https://github.com/user-attachments/assets/ff7543c2-2fd5-4d6c-85fc-059161d5801e" />
+
    - Keterangan: Hasil pengujian ping dari `tengen` menuju gateway `10.96.4.1` digunakan untuk memverifikasi konektivitas dasar Network 4.
 
 ## Soal 2 — Konfigurasi DHCP Server `tengen`
@@ -503,11 +507,13 @@ Berkas aktif tetap berada di `/etc/dhcp/dhcpd.conf` dan `/etc/default/isc-dhcp-s
 ### Bukti dan Hasil
 
 1. **Konfigurasi DHCP Server**
-   - Bukti: `Screenshot/soal-2/dhcpd-conf.png`
+   - Bukti: <img width="497" height="577" alt="dhcpd-conf" src="https://github.com/user-attachments/assets/da92c9dc-be07-458e-b19b-e57b2636dbb8" />
+
    - Keterangan: Menampilkan deklarasi Network 4 tanpa pool dinamis serta scope DHCP Network 2 dan Network 3.
 
 2. **Validasi Sintaks & Status Aktif Layanan ISC DHCP Server**
-   - Bukti: `Screenshot/soal-2/dhcp-validation.png`
+   - Bukti: <img width="802" height="301" alt="dhcp-validation" src="https://github.com/user-attachments/assets/40bd06aa-f7ee-450c-8c91-c2ebbbe5f948" />
+
    - Keterangan: Menampilkan hasil `dhcpd -t -4 -cf /etc/dhcp/dhcpd.conf` yang tidak menghasilkan error sintaks dan Menampilkan status layanan `isc-dhcp-server` setelah konfigurasi diterapkan.
 
 3. **Pemeriksaan Log**
@@ -862,6 +868,9 @@ Keberhasilan DHCP Relay dibuktikan apabila kedua klien memperoleh lease yang ses
 
 Simpan bukti pengujian dalam folder `bukti/soal-3/` dengan nama file berikut:
 
-1. `jichi-relay-config.png` — konfigurasi `/etc/default/isc-dhcp-relay` dan status layanan DHCP Relay.
-2. `itadori-dhcp-lease.png` — hasil pengujian DHCP klien Divisi A.
-3. `ino-dhcp-lease.png` — hasil pengujian DHCP klien Divisi B.
+1. <img width="801" height="157" alt="jichi-relay-config" src="https://github.com/user-attachments/assets/d0c87346-61bd-4769-855d-79359a7fccae" />
+ — konfigurasi `/etc/default/isc-dhcp-relay` dan status layanan DHCP Relay.
+2. <img width="723" height="500" alt="itadori-dhcp-lease" src="https://github.com/user-attachments/assets/3a31a6c9-1cce-4948-9165-eeb52b22a140" />
+ — hasil pengujian DHCP klien Divisi A.
+3. <img width="735" height="517" alt="ino-dhcp-lease" src="https://github.com/user-attachments/assets/75cdc4c5-6b75-42be-a07f-2b06b2421726" />
+ — hasil pengujian DHCP klien Divisi B.
