@@ -3,7 +3,7 @@
 ## Konfigurasi Jaringan, Routing, dan Layanan Infrastruktur
 
 **Nama:** Zidny Ilman Nafi'an
-**Nim:** 5027221072
+**NRP:** 5027221072
 **Kelompok:** K-65
 **Mata Kuliah:** Praktikum Jaringan Komputer
 **Topologi:** Jujutsu High — Shibuya Incident
